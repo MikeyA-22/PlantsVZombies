@@ -19,6 +19,8 @@ public class DaveController : MonoBehaviour
         rb.freezeRotation = true;
         
         SunflowerZombie.IncreaseScore += IncreaseScore;
+        Bullet.RandomAct += RandomAction;
+        
     }
     
 
@@ -42,5 +44,13 @@ public class DaveController : MonoBehaviour
             Instantiate(prefab, transform.position, Quaternion.identity);
         }        
     }
-    
+
+    void RandomAction()
+    {
+        int random = Random.Range(0, 10);
+        if (random > 9)
+        {
+            rb.AddForce(transform.right * speed);   
+        }
+    }
 }

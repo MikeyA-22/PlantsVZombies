@@ -7,7 +7,8 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody rb;
 
-    public static Action OnHit;
+    public static Action RandomAct;
+    public static Action FastnStrong;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,5 +30,20 @@ public class Bullet : MonoBehaviour
             other.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
         }
+        if (other.tag == "PZombie")
+        {
+            RandomAct.Invoke();
+            other.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
+        }
+        if (other.tag == "WZombie")
+        {
+            FastnStrong.Invoke();
+            Debug.Log("Fastn Strong");
+            other.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
+        }
+        
+        
     }
 }
